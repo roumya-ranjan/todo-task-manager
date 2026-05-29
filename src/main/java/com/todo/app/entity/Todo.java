@@ -1,4 +1,4 @@
-package com.todo.app.entiry;
+package com.todo.app.entity;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package com.todo.app.entiry;
+package com.todo.app.entity;
 
 import java.util.List;
 
@@ -24,6 +24,7 @@ public class User {
 	private String password;
 	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
 	private List<Todo> todos;
+	
 	
 	public Long getId() {
 		return id;
