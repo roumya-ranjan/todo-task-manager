@@ -2,6 +2,7 @@ package com.todo.app.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.todo.app.entity.Todo;
@@ -11,6 +12,7 @@ import com.todo.app.repository.TodoRepository;
 @Service
 public class TodoService {
 
+	@Autowired
 	private TodoRepository todoRepo;
 	
 	public Todo saveTodo(Todo todo) {
@@ -25,12 +27,13 @@ public class TodoService {
 		return todoRepo.findAll();
 	}
 	
-	public void deleteTodo(long id) {
-		todoRepo.deleteById(id);
+	public void deleteTodo(Long id) {
+	    todoRepo.findById(id).ifPresent(todoRepo::delete);
 	}
 	
-	public Todo getTodoByTodo(Long id) {
-		return todoRepo.findById(id).orElse(null);
+	public Todo getTodoById(Long id) {
+		return todoRepo.findById(id)
+		        .orElseThrow(() -> new RuntimeException("Todo not found"));
 	}
 	
 	

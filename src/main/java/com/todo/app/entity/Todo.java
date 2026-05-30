@@ -1,7 +1,8 @@
 package com.todo.app.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,10 +18,12 @@ public class Todo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String title;
 	private String description;
+	@Column(nullable = false)
 	private String status;
-	private LocalDate dueDate;
+	private LocalDateTime dueDate;
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -48,10 +51,10 @@ public class Todo {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public LocalDate getDueDate() {
+	public LocalDateTime getDueDate() {
 		return dueDate;
 	}
-	public void setDueDate(LocalDate dueDate) {
+	public void setDueDate(LocalDateTime dueDate) {
 		this.dueDate = dueDate;
 	}
 	public User getUser() {
@@ -59,11 +62,6 @@ public class Todo {
 	}
 	public void setUser(User user) {
 		this.user = user;
-	}
-	@Override
-	public String toString() {
-		return "Todo [id=" + id + ", title=" + title + ", description=" + description + ", status=" + status
-				+ ", dueDate=" + dueDate + ", user=" + user + "]";
 	}
 
 }

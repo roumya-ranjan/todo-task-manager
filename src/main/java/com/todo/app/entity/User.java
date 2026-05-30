@@ -56,13 +56,5 @@ public class User {
 	public void setTodos(List<Todo> todos) {
 		this.todos = todos;
 	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", todos=" + todos
-				+ "]";
-	}
-	
-	
-	
 	
 }
